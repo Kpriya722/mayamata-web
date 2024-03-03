@@ -25,11 +25,11 @@ jobs:
               
             - name: install dependencies
               run: yarn install
-              working-directory: ./source
+              working-directory: ./app
               
             - name: build
               run: yarn run build
-              working-directory: ./source
+              working-directory: ./app
 
             - name: publish
               run: |
@@ -37,7 +37,7 @@ jobs:
                 git config --global user.email $user_email
                 git remote set-url origin https://${github_token}@github.com/${repository}
                 yarn run deploy
-              working-directory: ./source
+              working-directory: ./app
               env:
                 user_name: 'github-actions[bot]'
                 user_email: 'github-actions[bot]@users.noreply.github.com'
