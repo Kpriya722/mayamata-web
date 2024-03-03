@@ -1,0 +1,42 @@
+name: run ci checks
+on:
+    push:
+        branches:
+        - main
+        paths:
+        - source
+    workflow_dispatch:
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v3
+            
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                node-version: '>=18.x'
+                scope: '@kpriya722'
+              env:
+                GH_TOKEN: ${{ secrets.TOKEN }}
+            - name: install gatsby cli
+              run: yarn global add gatsby-cli
+              
+            - name: install dependencies
+              run: yarn install
+              
+            - name: build
+              run: yarn run build
+            
+            - name: publish
+              run: |
+                git config --global user.name $user_name
+                git config --global user.email $user_email
+                git remote set-url origin https://${github_token}@github.com/${repository}
+                yarn run deploy
+              env:
+                user_name: 'github-actions[bot]'
+                user_email: 'github-actions[bot]@users.noreply.github.com'
+                github_token: ${{ secrets.TOKEN }}
+                repository: ${{ github.repository }}
