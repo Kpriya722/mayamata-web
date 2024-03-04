@@ -4,29 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Mayamata`,
     siteUrl: `https://www.mayamata.in`,
-    tagLine: "Mayamata",
-    description: "Mayamata",
     author: "Krishnapriya",
-    links: [
-      {
-        url: "/home",
-        text: "Home",
-        alt: "home",
-        class: "globalnav-item"
-      },
-      {
-        url: "/about",
-        text: "About Us",
-        alt: "about",
-        class: "globalnav-item"
-      },
-      {
-        url: "/contact",
-        text: "Contact Us",
-        alt: "contact",
-        class: "globalnav-item"
-      },
-    ]
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -35,7 +13,11 @@ const config: GatsbyConfig = {
   plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/icon.png"
+      "icons": [ 
+        { 
+          src: "src/images/mayamata.png" 
+        } 
+      ]
     }
   }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
@@ -51,6 +33,19 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `data`,
+      path: `${__dirname}/data`
+    },
+  },
+  {
+    resolve: `gatsby-transformer-yaml`,
+    options: {
+      typeName: `sitedata`
+    }
   },
   {
     resolve: `gatsby-plugin-google-gtag`,

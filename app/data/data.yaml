@@ -1,0 +1,35 @@
+title: Mayamata
+siteUrl: https://www.mayamata.in
+author: Krishnapriya
+tagLine: "Where Sustainability Meets Style"
+description: >
+  Our eco-friendly cotton wear brand celebrates inclusivity in every stitch, 
+  offering sizes for all body types. From breathable basics to fashion-forward staples,
+  each piece is thoughtfully crafted to embody our commitment to both the planet and our diverse community. 
+  Join us in embracing sustainable fashion without compromising on comfort or style.
+nav: 
+- url: "/"
+  text: "Home"
+  alt: "home"
+  class: "globalnav-item"
+- url: "/about"
+  text: "About Us"
+  alt: "about"
+  class: "globalnav-item"
+- url: "/contact"
+  text: "Contact Us"
+  alt: "contact"
+  class: "globalnav-item"
+contact:
+  phone: "+91 8590871440"
+  address:
+    line1: ""
+    line2: ""
+    city: ""
+    state: ""
+    code: ""
+  social:
+    twitter: ""
+    facebook: ""
+    lnikedIn: ""
+    instagram: ""

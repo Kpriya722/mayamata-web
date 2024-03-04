@@ -1,5 +1,6 @@
 import * as React from "react"
-import { StaticQuery, graphql, PageProps } from "gatsby"
+import Header from "./header/header"
+import Footer from "./footer/footer"
 
 interface Props {
     readonly children: React.ReactNode
@@ -7,29 +8,13 @@ interface Props {
 
 const Layout: React.FC<Props> = ({children}) => {
     return (
-        <StaticQuery
-            query={graphql`
-                query SiteTitleQuery {
-                    site {
-                        siteMetadata {
-                            title
-                            siteUrl
-                            tagLine
-                            author
-                            description
-                        }
-                    }
-                }
-            `}
-            render={data => (
-                <>
-                    <span>{data.site.siteMetadata.title}</span>
-                    <div className="body">
-                        {children}
-                    </div>
-                </>
-                
-            )} />
+        <>
+            <Header />
+            <main className="main-body">
+                {children}
+            </main>
+            <Footer />
+        </>
     )
 }
 
